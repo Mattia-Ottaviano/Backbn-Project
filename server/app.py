@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def ping_server():
@@ -9,7 +11,7 @@ def ping_server():
 
 @app.route('/simple_json')
 def simple_json():
-    return jsonify ('{nome:mario}')
+    return jsonify ({"nome":"mario"})
 
 
 if __name__=='__main__':

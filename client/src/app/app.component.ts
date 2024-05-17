@@ -12,7 +12,7 @@ export class AppComponent {
 
   constructor(private http: HttpClient)
   {
-    this.http.get("https://5000-mattiaottav-backbnproje-dgcduu6d7n3.ws-eu111.gitpod.io/simple_json")
+    this.http.get("https://5000-mattiaottav-backbnproje-hmfi75a71m2.ws-eu111.gitpod.io/simple_json")
     .subscribe(
       (data) => {
         this.data = data;
