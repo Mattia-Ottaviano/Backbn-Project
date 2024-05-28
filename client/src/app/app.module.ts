@@ -11,7 +11,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule //<-- aggiungi questo import
     
   ],
   providers: [],

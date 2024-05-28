@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Animal, AnimalsService, VettAnimal } from './animals.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,17 +10,40 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'client';
-  data = {};
+  data = new Array<Animal>();
 
-  constructor(private http: HttpClient)
+  constructor(private animalService : AnimalsService)
   {
-    this.http.get("https://5000-mattiaottav-backbnproje-pjosqx56oq4.ws-eu114.gitpod.io/simple_json")
-    .subscribe(
-      (data) => {
-        this.data = data;
-        console.log(this.data);
-      }
+     //Mi sottoscrivo al servizio
+     this.animalService.getAnimals().subscribe(
+      (data: VettAnimal)=>{this.data = data['animals']}
     )
 
+  }
+
+   //Per la reactive form creo due proprietà che conterranno i valori delle caselle di testo
+  form = new FormGroup({
+    "name": new FormControl(),
+    "type": new FormControl(),
+  });
+
+  onSubmit() {
+    console.log("reactive form submitted");
+    console.log(this.form.controls['name'].value);
+    console.log(this.form.controls['type'].value);
+    let a : Animal = {
+      "id": '0',
+      "name":this.form.controls['name'].value,
+      "type": this.form.controls['type'].value
+    };
+
+    //Quando ricevo una risposta dal server aggiorno l'id dell'animale e lo invio al vettore data
+    this.animalService.sendNewAnimal(a).subscribe(
+      (data)=>{
+        console.log(data);
+        a.id = data['id'];
+        this.data.push(a);
+      }
+    )
   }
 }
