@@ -1,27 +1,24 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Animal, AnimalsService, VettAnimal } from './animals.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AnimalsService } from './animals.service';
+import { Animal, VettAnimal } from './animals.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'client';
   data = new Array<Animal>();
-
-  constructor(private animalService : AnimalsService)
-  {
-     //Mi sottoscrivo al servizio
-     this.animalService.getAnimals().subscribe(
-      (data: VettAnimal)=>{this.data = data['animals']}
+  constructor(private animalService: AnimalsService) {
+    this.animalService.getAnimals().subscribe(
+      (data: VettAnimal) => { this.data = data['animals'] }
     )
-
   }
 
-   //Per la reactive form creo due proprietà che conterranno i valori delle caselle di testo
+  //Per la reactive form creo due proprietà che conterranno i valori delle caselle di testo
   form = new FormGroup({
     "name": new FormControl(),
     "type": new FormControl(),

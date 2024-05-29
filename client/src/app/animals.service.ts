@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments.environment';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +9,9 @@ import { Observable } from 'rxjs';
 export class AnimalsService {
 
   constructor(private http: HttpClient) { }
-
-
-   //Il metodo fa una chiamata Http al server
-   getAnimals() {
+  
+  //Il metodo fa una chiamata Http al server
+  getAnimals() {
     return this.http.get<VettAnimal>(environment.baseUrlServer + 'animals');
   }
 
@@ -25,7 +23,6 @@ export class AnimalsService {
     return this.http.post<Animal>(environment.baseUrlServer + 'newAnimal', animal,this.httpOptions)
   }
 }
-
 
 /*
 Definisco il tipo di dato che mi aspetto di ricevere dal server 
@@ -47,6 +44,5 @@ export interface Animal {
   name: string;
   type: any;
 }
-
 
 
