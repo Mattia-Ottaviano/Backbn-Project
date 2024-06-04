@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
 export class AnimalsService {
 
   constructor(private http: HttpClient) { }
+
+  
   
   //Il metodo fa una chiamata Http al server
   getAnimals() {

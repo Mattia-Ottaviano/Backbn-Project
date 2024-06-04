@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    baseUrlServer: 'https://5000-mattiaottav-backbnproje-g4afm7k63jq.ws-eu114.gitpod.io/'
+    baseUrlServer: 'https://5000-mattiaottav-backbnproje-f2feh2cdud4.ws-eu114.gitpod.io/'
   };
   
   /*
