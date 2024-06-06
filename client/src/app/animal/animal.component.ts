@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Animal } from '../animals.service';
+
 
 @Component({
   selector: 'app-animal',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./animal.component.css']
 })
 export class AnimalComponent {
+
+  @Input() animal : Animal = undefined!
+
+nutri()
+{
+    //Qui andrà una chiamata al server che invierà l'informazione al server python
+}
 
 }
